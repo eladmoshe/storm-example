@@ -34,7 +34,6 @@ translation.json:
 	@find apps/**/client/locales/de -name "$(TRANSLATION_FILE)" | sort | while read name; do echo ""; cat "$$name"; echo ""; done >> $(PUBLIC_PATH)/locales/de/$(TRANSLATION_FILE)
 	@echo "}" >> $(PUBLIC_PATH)/locales/de/$(TRANSLATION_FILE)
 
-
 public_struct:
 	@$(INFO) "restructuring public folder\n"
 	@rm -Rf $(PUBLIC_PATH)
@@ -68,17 +67,6 @@ stylesheets:
 	@node_modules/less/bin/lessc $(TEMP_ASSETS_FILE) > $(STYLESHEETS_TARGET)
 	@cp $(VENDOR_PATH)/bootstrap/css/bootstrap.css $(PUBLIC_PATH)/css/bootstrap.css
 	@cp $(VENDOR_PATH)/bootstrap/css/bootstrap-responsive.css $(PUBLIC_PATH)/css/bootstrap-responsive.css
-
-build_deploy:
-	@$(INFO) "generating storm.tar.gz in deploy/\n"
-	@rm -Rf $(DEPLOY_PATH)
-	@mkdir $(DEPLOY_PATH)
-	@tar cvvf $(DEPLOY_PATH)/storm.tar .  --exclude=.git --exclude=storm.json --exclude=vendor --exclude=static-analysis --exclude=node_modules --exclude=client --exclude=test --exclude=storm_ops --exclude=*.tap
-	@tar cvvf $(DEPLOY_PATH)/shync.tar vendor/shync/lib
-	@tar --concatenate --file=deploy/storm.tar deploy/shync.tar
-	@tar cvvf $(DEPLOY_PATH)/runner.tar utils/runner/tcTemplate.xml
-	@tar --concatenate --file=deploy/runner.tar deploy/runner.tar
-	@gzip $(DEPLOY_PATH)/storm.tar
 
 #----------------------------------------------------------
 # Paths

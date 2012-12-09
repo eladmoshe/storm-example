@@ -1,6 +1,6 @@
 $(function () {
    window.App = {
-      Controllers:{},
+      Factories:{},
       Views:{},
       Models:{},
       Collections:{},
@@ -18,10 +18,12 @@ $(function () {
 
    App.Marionette = new Backbone.Marionette.Application();
 
+   //cache the template so that we only create in once
    Backbone.Marionette.TemplateCache.prototype.compileTemplate = function (rawTemplate) {
       return jade.compile(rawTemplate);
    };
 
+   //handle internationalization by translating all i18n keys in the markup
    Backbone.Marionette.View.prototype.onRender = function () {
       $(this.el).i18n();
    };
