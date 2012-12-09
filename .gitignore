@@ -13,6 +13,6 @@ results
 
 npm-debug.log
 
-.idea
+.idea/
 node_modules
-public
+public/
