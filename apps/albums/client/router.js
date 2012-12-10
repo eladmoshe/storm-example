@@ -2,15 +2,15 @@ App.Routers.AlbumsRouter = Backbone.Router.extend({
 
    routes: {
       "": "userSelection",
-      "album/:albumId/images": "albumView"
+      "user/:userId/albums": "albumsListView"
    },
 
    userSelection: function() {
       App.Factories.albumFactory.showUserSelection();
    },
 
-   albumView: function(galleryId){
-      App.Factories.albumFactory.showAlbum(galleryId);
+   albumsListView: function(userId){
+      App.Factories.albumFactory.showAlbumList(userId);
    }
 });
 

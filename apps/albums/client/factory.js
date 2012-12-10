@@ -1,11 +1,25 @@
 App.Factories.albumFactory = {
 
    showUserSelection : function(){
-      App.Marionette.container.show(new App.Views.UserSelection());
+      var model = new App.Models.UserSelection();
+      App.Marionette.container.show(new App.Views.UserSelection({model: model}));
+   },
+
+   showAlbumList: function(userId){
+      var collection = new App.Models.AlbumCollection({userId: userId});
+      collection.fetch({
+         error: function(collection, xhr, options){
+            throw {model: model, xhr: xhr, options: options}
+         },
+         success: function(mycollection, response, options) {
+            console.log("preparing to show album list ", {collection: collection, resp: response});
+            App.Marionette.container.show(new App.Views.AlbumList({collection: collection}));
+         }
+      });
    },
 
    showAlbum : function(albumId){
-      var model = new App.Models.Album({albumId: albumId});
+      var model = new App.Models.Album({userId: userId, albumId: albumId});
       model.fetch({
          error: function(model, xhr, options){
             throw {model: model, xhr: xhr, options: options}
