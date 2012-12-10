@@ -9,10 +9,7 @@ $.i18n.init({
    function () {
       App.Marionette.start();
       // Process routes only after we have a session at hand
-      App.Events.on('accounts:newSession',function initBackboneHistory() {
-         Backbone.history.start();
-         App.Events.off('accounts:newSession',initBackboneHistory);
-      });
+      Backbone.history.start();
    });
 })
 ;

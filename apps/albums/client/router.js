@@ -1,21 +1,21 @@
-App.Routers.GalleriesRouter = Backbone.Router.extend({
+App.Routers.AlbumsRouter = Backbone.Router.extend({
 
    routes: {
-      "": "albumSelection",
+      "": "userSelection",
       "album/:albumId/images": "albumView"
    },
 
-   gallerySelection: function() {
-      App.Factories.galleryFactory.showGallerySelection();
+   userSelection: function() {
+      App.Factories.albumFactory.showUserSelection();
    },
 
-   galleryView: function(galleryId){
-      App.Factories.galleryFactory.showGallery(galleryId);
+   albumView: function(galleryId){
+      App.Factories.albumFactory.showAlbum(galleryId);
    }
 });
 
 //marionette initializers are guaranteed to run only after the application is started
 App.Marionette.addInitializer(function() {
-   App.Routers.requirementsRouter = new App.Routers.GalleriesRouter();
+   App.Routers.albumsRouter = new App.Routers.AlbumsRouter();
 });
 
