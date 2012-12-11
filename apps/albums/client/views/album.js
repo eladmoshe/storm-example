@@ -7,7 +7,7 @@ App.Views.Album = Backbone.Marionette.ItemView.extend({
    serializeData: function(){
       return {
          title: this.model.get("title"),
-         url: this.model.get("url")
+         albumUrl: "#user/"+this.model.get("userId")+"/albums/"+this.model.get("id")
       };
    }
 });

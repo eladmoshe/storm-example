@@ -9,7 +9,7 @@ App.Factories.albumFactory = {
       var collection = new App.Models.AlbumCollection({userId: userId});
       collection.fetch({
          error: function(collection, xhr, options){
-            throw {model: model, xhr: xhr, options: options}
+            throw {collection: collection, xhr: xhr, options: options}
          },
          success: function(collection, response, options) {
          }
@@ -17,7 +17,7 @@ App.Factories.albumFactory = {
       App.Marionette.container.show(new App.Views.AlbumList({collection: collection}));
    },
 
-   showAlbum : function(albumId){
+   showAlbum : function(userId, albumId){
       var model = new App.Models.Album({userId: userId, albumId: albumId});
       model.fetch({
          error: function(model, xhr, options){

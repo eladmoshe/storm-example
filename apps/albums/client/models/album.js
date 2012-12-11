@@ -5,7 +5,7 @@ App.Models.Album = Backbone.Model.extend({
    },
 
    url: function() {
-      return "https://picasaweb.google.com/data/feed/api/user/" + this.userId + "/albumid/" + this.albumId + "?alt=json";
+      return "https://picasaweb.google.com/data/feed/api/user/" + this.userId + "/albumid/" + this.id + "?alt=json";
    }
 });
 
@@ -26,7 +26,9 @@ App.Models.AlbumCollection = Backbone.Collection.extend({
       if (response && response.feed) {
          return _.map(response.feed.entry, function(item) {
             return {
-               title: item.title.$t
+               title: item.title.$t,
+               id: item.gphoto$id.$t,
+               userId: item.gphoto$user.$t
             };
          });
       } else {
