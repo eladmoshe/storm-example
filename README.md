@@ -12,6 +12,7 @@ like to help by improving the sample, feel free to fork and and send a pull requ
 
 You will need Node.js installed. After cloning the repository to your local machine, run 
     
+    make
     npm install
 
 to install the required npm package.
