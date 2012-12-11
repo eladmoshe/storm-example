@@ -1,15 +1,7 @@
 App.Models.Album = Backbone.Model.extend({
-
-   initialize: function(options) {
-      this.albumId = options.albumId;
-   },
-
-   url: function() {
-      return "https://picasaweb.google.com/data/feed/api/user/" + this.userId + "/albumid/" + this.id + "?alt=json";
-   }
 });
 
-App.Models.AlbumCollection = Backbone.Collection.extend({
+App.Collections.AlbumCollection = Backbone.Collection.extend({
 
    model: App.Models.Album,
 
@@ -17,12 +9,12 @@ App.Models.AlbumCollection = Backbone.Collection.extend({
       this.userId = options.userId;
    },
 
-   url: function() {//112560626781695473926
+   url: function() {
       return "https://picasaweb.google.com/data/feed/api/user/" + this.userId + "?alt=json";
    },
 
+   //parses Google's picasa api to create a minimal model
    parse: function(response) {
-      console.log("raw response", response);
       if (response && response.feed) {
          return _.map(response.feed.entry, function(item) {
             return {
@@ -35,9 +27,5 @@ App.Models.AlbumCollection = Backbone.Collection.extend({
          console.log("Bad or empty response ", response);
          return null;
       }
-
    }
-
-
-
 });
