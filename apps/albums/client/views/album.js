@@ -2,24 +2,19 @@ App.Views.Album = Backbone.Marionette.ItemView.extend({
 
    template: '#tpl-albums-album',
 
+   tagName: 'li',
+
    serializeData: function(){
       return {
-         title: this.model.get("title").$t
+         title: this.model.get("title"),
+         url: this.model.get("url")
       };
-   },
-
-   initialize: function(options){
-      console.log("rendered single album view ", this.options);
    }
 });
 
 App.Views.AlbumList = Backbone.Marionette.CollectionView.extend({
 
-   tagName: 'div',
+   tagName: 'ul',
 
-   itemView: App.Views.Album,
-
-   onRender:function(){
-      console.log("rendering album list", this.options);
-   }
+   itemView: App.Views.Album
 });

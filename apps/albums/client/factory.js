@@ -11,11 +11,10 @@ App.Factories.albumFactory = {
          error: function(collection, xhr, options){
             throw {model: model, xhr: xhr, options: options}
          },
-         success: function(mycollection, response, options) {
-            console.log("preparing to show album list ", {collection: collection, resp: response});
-            App.Marionette.container.show(new App.Views.AlbumList({collection: collection}));
+         success: function(collection, response, options) {
          }
       });
+      App.Marionette.container.show(new App.Views.AlbumList({collection: collection}));
    },
 
    showAlbum : function(albumId){
