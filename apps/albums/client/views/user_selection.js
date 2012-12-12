@@ -4,10 +4,11 @@ App.Views.UserSelection = Backbone.Marionette.ItemView.extend({
 
    ui: {
       "submit": "#submit",
-      "userId": "#userId"
+      "userId": "#userId",
+      "help": ".icon-question-sign"
    },
 
-   serializeData: function(){
+   serializeData: function() {
       return {
          userId: this.model.get("userId")
       };
@@ -20,7 +21,8 @@ App.Views.UserSelection = Backbone.Marionette.ItemView.extend({
          if (userId) {
             Backbone.Router.prototype.navigate("user/" + userId + "/albums", {trigger: true})
          }
-      })
+      });
+      this.ui.help.tooltip();
    }
 
 });
