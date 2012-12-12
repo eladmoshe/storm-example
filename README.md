@@ -3,8 +3,8 @@ storm-example
 
 ### General Description
 
-This is basic skeleton of a Single Page Application that represents a stripped down version of Storm's 
-implementation. 
+This application is a basic reference implementation of client side JavaScript Single Page Application, using the JavaScript frameworks Backbone.js, 
+Backbone.Marionette, Twitter Bootstrap and Jade. It represents a stripped down version of Storm's implementation. 
 Obviously there is more than one way to implement an application. If you would 
 like to help by improving the sample, feel free to fork and and send a pull request.
 
