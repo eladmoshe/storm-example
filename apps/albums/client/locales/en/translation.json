@@ -1,5 +1,5 @@
 "Albums": {
-    "user-id-help":"The ID of the user in Picasa. To discover the ID of a user, open any photo and check the url. The first number in the url is the ID of the user",
+    "user-id-help":"The ID of the user in Picasa. To discover the ID of a user, open any photo and check the url. The first number in the url is the ID of the user. You can use the provided default ID for demonstrations purpose",
     "user-id": "Enter a Picasa user Id"
 
 }

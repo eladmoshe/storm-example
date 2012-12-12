@@ -1,10 +1,11 @@
 form.form-horizontal.container
-   .control-group
-      label.control-label(for="userId", data-i18n="Albums.user-id")
-          .icon-question-sign(data-placement="bottom", data-i18n="[title]Albums.user-id-help")
-      .controls
-          input#userId(type="text", placeholder="User Id", value="#{userId}")
-   .control-group
-      .controls
-          a#submit.btn() Submit
+    .well
+       .control-group
+          label.control-label(for="userId", data-i18n="Albums.user-id")
+          .icon-question-sign(data-placement="bottom", data-i18n="[title]Albums.user-id-help").pull-left
+          .controls
+              input#userId(type="text", placeholder="User Id", value="#{userId}")
+       .control-group
+          .controls
+              a#submit.btn() Submit
 

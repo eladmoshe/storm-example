@@ -18,7 +18,7 @@ App.Views.AlbumList = Backbone.Marionette.CollectionView.extend({
 
    tagName: 'ul',
 
-   className: 'thumbnails',
+   className: 'thumbnails well',
 
    template: 'tpl-albums-album_container',
 
