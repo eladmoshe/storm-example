@@ -1,7 +1,7 @@
-form.form-horizontal
+form.form-horizontal.container
    .control-group
-      label.control-label(for="userId") User Id
-          .icon-question-sign(data-placement="bottom", data-title="The ID of the user in Picasa. To discover the ID of a user, open any photo and check the url. The first number in the url is the ID of the user")
+      label.control-label(for="userId", data-i18n="Albums.user-id")
+          .icon-question-sign(data-placement="bottom", data-i18n="[title]Albums.user-id-help")
       .controls
           input#userId(type="text", placeholder="User Id", value="#{userId}")
    .control-group
