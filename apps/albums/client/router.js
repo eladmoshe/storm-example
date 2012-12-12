@@ -7,15 +7,15 @@ App.Routers.AlbumsRouter = Backbone.Router.extend({
    },
 
    userSelection: function() {
-      App.Factories.albumFactory.showUserSelection();
+      App.UiFactories.albumFactory.showUserSelection();
    },
 
    albumsListView: function(userId){
-      App.Factories.albumFactory.showAlbumList(userId);
+      App.UiFactories.albumFactory.showAlbumList(userId);
    },
 
    albumImages: function(userId, albumId){
-      App.Factories.albumFactory.showAlbumImages(userId, albumId);
+      App.UiFactories.albumFactory.showAlbumImages(userId, albumId);
    }
 });
 

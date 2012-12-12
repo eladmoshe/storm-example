@@ -1,4 +1,4 @@
-App.Factories.albumFactory = {
+App.UiFactories.albumFactory = {
 
    showUserSelection: function() {
       var model = new App.Models.UserSelection();
