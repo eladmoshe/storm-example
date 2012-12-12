@@ -7,7 +7,9 @@ App.Views.Album = Backbone.Marionette.ItemView.extend({
    serializeData: function(){
       return {
          title: this.model.get("title"),
-         albumUrl: "#user/"+this.model.get("userId")+"/albums/"+this.model.get("id")
+         albumUrl: "#user/"+this.model.get("userId")+"/albums/"+this.model.get("id"),
+         thumbnail: this.model.get("thumbnail"),
+         photoCount: this.model.get("photoCount")
       };
    }
 });
@@ -15,6 +17,10 @@ App.Views.Album = Backbone.Marionette.ItemView.extend({
 App.Views.AlbumList = Backbone.Marionette.CollectionView.extend({
 
    tagName: 'ul',
+
+   className: 'thumbnails',
+
+   template: 'tpl-albums-album_container',
 
    itemView: App.Views.Album
 });

@@ -1,6 +1,6 @@
 #----------- User targets
 
-public_debug: public_struct vendor_debug index.html app_debug translation.json
+public_debug: public_struct vendor_debug public_img index.html app_debug translation.json
 
 app_debug:
 	@$(INFO) "Generating $(APP_TARGET)\n"
@@ -67,6 +67,9 @@ stylesheets:
 	@node_modules/less/bin/lessc $(TEMP_ASSETS_FILE) > $(STYLESHEETS_TARGET)
 	@cp $(VENDOR_PATH)/bootstrap/css/bootstrap.css $(PUBLIC_PATH)/css/bootstrap.css
 	@cp $(VENDOR_PATH)/bootstrap/css/bootstrap-responsive.css $(PUBLIC_PATH)/css/bootstrap-responsive.css
+
+public_img:
+	@cp $(VENDOR_PATH)/bootstrap/img/* $(PUBLIC_PATH)/img/
 
 #----------------------------------------------------------
 # Paths

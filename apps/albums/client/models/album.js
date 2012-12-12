@@ -20,7 +20,9 @@ App.Collections.AlbumCollection = Backbone.Collection.extend({
             return {
                title: item.title.$t,
                id: item.gphoto$id.$t,
-               userId: item.gphoto$user.$t
+               userId: item.gphoto$user.$t,
+               thumbnail: item.media$group.media$thumbnail[0].url,
+               photoCount: item.gphoto$numphotos.$t
             };
          });
       } else {

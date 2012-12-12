@@ -20,7 +20,6 @@ App.Collections.ImageList = Backbone.Collection.extend({
    },
 
    parse: function(response) {
-      console.log("raw response", response);
       if (response && response.feed) {
          return _.map(response.feed.entry, function(item) {
             return {
