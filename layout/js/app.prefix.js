@@ -1,6 +1,6 @@
 $(function () {
    window.App = {
-      Factories:{},
+      UiFactories:{},
       Views:{},
       Models:{},
       Collections:{},
