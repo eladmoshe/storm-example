@@ -6,7 +6,6 @@ app_debug:
 	@$(INFO) "Generating $(APP_TARGET)\n"
 	@cat $(LAYOUT_PATH)/js/app.prefix.js > $(APP_TARGET);
 	@cat $(CONFIG_PATH)/client/development.js >> $(APP_TARGET);
-	@find common/client -name "*.js" | sort | while read name; do echo ""; echo "//-------------  $$name  ------------"; echo ""; cat "$$name"; echo ""; done >> $(APP_TARGET)
 	@find apps/**/client -name "*.js" | sort | while read name; do echo ""; echo "//-------------  $$name  ------------"; echo ""; cat "$$name"; echo ""; done >> $(APP_TARGET)
 	@cat $(LAYOUT_PATH)/js/app.postfix.js >> $(APP_TARGET);
 
@@ -14,14 +13,13 @@ app_release:
 	@$(INFO) "Generating $(APP_TARGET)\n"
 	@cat $(LAYOUT_PATH)/js/app.prefix.js > $(APP_TARGET);
 	@cat $(CONFIG_PATH)/client/production.js >> $(APP_TARGET);
-	@find common/client -name "*.js" | sort | while read name; do echo ""; echo "//-------------  $$name  ------------"; echo ""; cat "$$name"; echo ""; done >> $(APP_TARGET)
 	@find apps/**/client -name "*.js" | sort | while read name; do echo ""; echo "//-------------  $$name  ------------"; echo ""; cat "$$name"; echo ""; done >> $(APP_TARGET)
 	@cat $(LAYOUT_PATH)/js/app.postfix.js >> $(APP_TARGET);
 
 index.html:
 	@$(INFO) "building index.html\n"
 	@$(eval TEMP_ASSETS_FILE := $(shell mktemp -t stormXXXXXXXXXX))
-	@find apps/**/client -name "*.jade" | sort | xargs -L1 -n2 -I % env val=% awk 'BEGIN {n=split(ENVIRON["val"],arr,"[./]") ; print "<script type=\"text/x-template\" id=\"tpl-" arr[n-4]"-"arr[n-1] "\">"}; {print } END {print "</script>"}' % > $(TEMP_ASSETS_FILE) ; find common/client -name "*.jade" | sort | xargs -L1 -n2 -I % env val=% awk 'BEGIN {n=split(ENVIRON["val"],arr,"[./]") ; print "<script type=\"text/x-template\" id=\"tpl-" arr[n-4]"-"arr[n-1] "\">"}; {print } END {print "</script>"}' % >> $(TEMP_ASSETS_FILE) ; sed -e '/@@TEMPLATES@@/r '$(TEMP_ASSETS_FILE) -e '/@@TEMPLATES@@/d' $(HTML_LAYOUT) > $(HTML_OUTPUT) ; rm $(TEMP_ASSETS_FILE)
+	@find apps/**/client -name "*.jade" | sort | xargs -L1 -n2 -I % env val=% awk 'BEGIN {n=split(ENVIRON["val"],arr,"[./]") ; print "<script type=\"text/x-template\" id=\"tpl-" arr[n-4]"-"arr[n-1] "\">"}; {print } END {print "</script>"}' % > $(TEMP_ASSETS_FILE) ; sed -e '/@@TEMPLATES@@/r '$(TEMP_ASSETS_FILE) -e '/@@TEMPLATES@@/d' $(HTML_LAYOUT) > $(HTML_OUTPUT) ; rm $(TEMP_ASSETS_FILE)
 
 translation.json:
 	@$(INFO) "Generating translation files\n"
@@ -62,7 +60,6 @@ vendor_release: public_struct index.html stylesheets
 stylesheets:
 	@$(INFO) "Building stylesheets\n"
 	@$(eval TEMP_ASSETS_FILE := $(shell mktemp -t stormXXXXXXXXXX))
-	@find $(COMMON_PATH)/client -name "*.less" | sort | while read name; do echo ""; echo "/*-------------  $$name  ------------*/"; echo ""; cat "$$name"; echo ""; done >> $(TEMP_ASSETS_FILE)
 	@find apps/**/client -name "*.less" | sort | while read name; do echo ""; echo "/*-------------  $$name  ------------*/"; echo ""; cat "$$name"; echo ""; done >> $(TEMP_ASSETS_FILE)
 	@node_modules/less/bin/lessc $(TEMP_ASSETS_FILE) > $(STYLESHEETS_TARGET)
 	@cp $(VENDOR_PATH)/bootstrap/css/bootstrap.css $(PUBLIC_PATH)/css/bootstrap.css
