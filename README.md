@@ -24,6 +24,6 @@ You will need Node.js installed. After cloning the repository to your local mach
 to install the required npm package.
 To run the server run
     
-    node node mock_server/server.js
+    node mock_server/server.js
 
 To start the application open your browser at [localhost:1234](http://localhost:1234)
