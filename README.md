@@ -5,7 +5,9 @@ storm-example
 
 This application is a basic reference implementation of client side JavaScript Single Page Application, using the JavaScript frameworks Backbone.js, 
 Backbone.Marionette, Twitter Bootstrap and Jade. It represents a stripped down version of Storm's implementation. 
-Obviously there is more than one way to implement an application, so you may not agree with all design decisions. 
+Obviously there is more than one way to implement an application, so you may not agree with all design decisions.
+It is not meant to represent the best way to implement such application. Rather, it represents the solution that 
+was chosen for Storm. 
 
 ### Improving the Application
 
